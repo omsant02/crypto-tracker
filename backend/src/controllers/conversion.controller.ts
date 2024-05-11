@@ -1,9 +1,12 @@
-// controllers/conversion.controller.ts
 import { Request, Response } from "express";
 import axios from "axios";
 
 export const convertCurrency = async (req: Request, res: Response) => {
-  const { sourceCrypto, amount, targetCurrency } = req.query;
+  const { sourceCrypto, amount, targetCurrency } = req.query as {
+    sourceCrypto: string;
+    amount: string;
+    targetCurrency: string;
+  };
 
   try {
     // Fetch current exchange rates from CoinGecko API
@@ -18,7 +21,7 @@ export const convertCurrency = async (req: Request, res: Response) => {
     );
 
     const exchangeRate = response.data[sourceCrypto][targetCurrency];
-    const convertedAmount = parseFloat(amount as string) * exchangeRate;
+    const convertedAmount = parseFloat(amount) * exchangeRate;
 
     res.json({ convertedAmount });
   } catch (error) {
