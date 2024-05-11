@@ -1,0 +1,47 @@
+.top-crypto-list {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.crypto-list {
+  margin-top: 10px;
+}
+
+.crypto-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+.coin {
+  display: flex;
+  align-items: center;
+}
+
+.coin img {
+  margin-right: 10px;
+}
+
+.change.positive {
+  color: #00ff00;
+}
+
+.change.negative {
+  color: #ff0000;
+}
