@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./CurrencyConverter.css";
 
 interface Crypto {
   id: string;
@@ -18,7 +19,9 @@ const CurrencyConverter = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/v1/crypto/cryptos");
+        const response = await axios.get(
+          "http://localhost:5000/api/v1/crypto/cryptos"
+        );
         setTopCryptos(response.data.topCryptos);
         setSupportedCurrencies(response.data.supportedCurrencies);
       } catch (error) {
@@ -33,13 +36,16 @@ const CurrencyConverter = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.get("/api/v1/conversion/convert", {
-        params: {
-          sourceCrypto,
-          amount,
-          targetCurrency,
-        },
-      });
+      const response = await axios.get(
+        "http://localhost:5000/api/v1/conversion/convert",
+        {
+          params: {
+            sourceCrypto,
+            amount,
+            targetCurrency,
+          },
+        }
+      );
 
       setConvertedAmount(response.data.convertedAmount);
     } catch (error) {
@@ -48,10 +54,10 @@ const CurrencyConverter = () => {
   };
 
   return (
-    <div>
+    <div className="converter-container">
       <h1>Currency Converter</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="sourceCrypto">Source Cryptocurrency:</label>
           <select
             id="sourceCrypto"
@@ -67,7 +73,7 @@ const CurrencyConverter = () => {
           </select>
         </div>
 
-        <div>
+        <div className="form-group">
           <label htmlFor="amount">Amount:</label>
           <input
             id="amount"
@@ -77,7 +83,7 @@ const CurrencyConverter = () => {
           />
         </div>
 
-        <div>
+        <div className="form-group">
           <label htmlFor="targetCurrency">Target Currency:</label>
           <select
             id="targetCurrency"
@@ -95,7 +101,7 @@ const CurrencyConverter = () => {
         <button type="submit">Convert</button>
       </form>
       {convertedAmount > 0 && (
-        <div>
+        <div className="result">
           <p>
             {amount} {sourceCrypto.toUpperCase()} = {convertedAmount}{" "}
             {targetCurrency.toUpperCase()}
