@@ -5,7 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "ts-node src/server.ts",
-    "test": "jest"
+    "build": "npm install --legacy-peer-deps --output public && npm install --legacy-peer-deps --prefix frontend --output public && npm run build --prefix frontend --output public"
   },
   "keywords": [],
   "author": "",
