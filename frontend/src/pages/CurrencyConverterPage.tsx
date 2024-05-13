@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import "../components/CurrencyConverter.css";
 
 interface Crypto {
   id: string;

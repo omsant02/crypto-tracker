@@ -9,7 +9,6 @@ export const convertCurrency = async (req: Request, res: Response) => {
   };
 
   try {
-    // Fetch current exchange rates from CoinGecko API
     const response = await axios.get(
       `https://api.coingecko.com/api/v3/simple/price`,
       {

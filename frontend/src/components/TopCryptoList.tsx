@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./TopCryptoList.css"; // Import the CSS file
+import "./TopCryptoList.css";
 
 interface Crypto {
   id: string;
@@ -26,7 +26,6 @@ const TopCryptoList = () => {
         console.error(error);
       }
     };
-
     fetchData();
   }, []);
 
@@ -49,7 +48,8 @@ const TopCryptoList = () => {
                 height="24"
               />
               <span>
-                {crypto.name} ({crypto.symbol.toUpperCase()})
+                {" "}
+                {crypto.name} ({crypto.symbol.toUpperCase()}){" "}
               </span>
             </div>
             <div className="price">₹ {crypto.current_price.toFixed(2)}</div>

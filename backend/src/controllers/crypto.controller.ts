@@ -1,4 +1,3 @@
-// controllers/crypto.controller.ts
 import { Request, Response } from "express";
 import axios from "axios";
 
@@ -6,7 +5,7 @@ interface CryptoData {
   id: string;
   name: string;
   symbol: string;
-  image: { thumb: string };
+  image: string;
   current_price: number;
   price_change_percentage_24h: number;
   market_cap: number;
@@ -29,18 +28,16 @@ export const getTopCryptosAndSupportedCurrencies = async (
         },
       }
     );
-
     const supportedCurrencies = ["inr", "usd", "eur", "gbp"];
     const topCryptos = response.data.map((crypto: CryptoData) => ({
       id: crypto.id,
       name: crypto.name,
       symbol: crypto.symbol,
-      image: crypto.image.thumb,
+      image: crypto.image,
       current_price: crypto.current_price,
       price_change_percentage_24h: crypto.price_change_percentage_24h,
       market_cap: crypto.market_cap,
     }));
-
     res.json({ topCryptos, supportedCurrencies });
   } catch (error) {
     console.error(error);
