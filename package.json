@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/src/server.ts",
-    "build": "npm install --legacy-peer-deps --output public && npm install --legacy-peer-deps --prefix frontend --output public && npm run build --prefix frontend --output public"
+    "start": "ts-node backend/src/server.ts",
+    "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
