@@ -26,6 +26,10 @@ export const getTopCryptosAndSupportedCurrencies = async (
           page: 1,
           sparkline: false,
         },
+        headers: {
+          accept: "application/json",
+          "x-cg-demo-api-key": process.env.COINGECKO_API_KEY,
+        },
       }
     );
     const supportedCurrencies = ["inr", "usd", "eur", "gbp"];

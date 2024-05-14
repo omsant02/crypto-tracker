@@ -16,6 +16,10 @@ export const convertCurrency = async (req: Request, res: Response) => {
           ids: sourceCrypto,
           vs_currencies: targetCurrency,
         },
+        headers: {
+          accept: "application/json",
+          "x-cg-demo-api-key": process.env.COINGECKO_API_KEY,
+        },
       }
     );
 
